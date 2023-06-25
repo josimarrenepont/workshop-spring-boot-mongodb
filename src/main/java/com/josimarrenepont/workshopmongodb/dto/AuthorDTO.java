@@ -1,8 +1,8 @@
 package com.josimarrenepont.workshopmongodb.dto;
 
-import java.io.Serializable;
-
 import com.josimarrenepont.workshopmongodb.domain.User;
+
+import java.io.Serializable;
 
 
 public class AuthorDTO implements Serializable {
@@ -16,7 +16,7 @@ public class AuthorDTO implements Serializable {
 	}
 	public AuthorDTO(User obj) {
 		id = obj.getId();
-		name = obj.getEmail();
+		name = obj.getName();
 	}
 	public String getId() {
 		return id;
