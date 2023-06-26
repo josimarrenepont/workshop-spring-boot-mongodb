@@ -1,16 +1,16 @@
 package com.josimarrenepont.workshopmongodb.domain;
 
-import com.josimarrenepont.workshopmongodb.dto.AuthorDTO;
-import com.josimarrenepont.workshopmongodb.dto.ComentDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.josimarrenepont.workshopmongodb.dto.AuthorDTO;
+import com.josimarrenepont.workshopmongodb.dto.ComentDTO;
 
 @Document
 public class Post implements Serializable {

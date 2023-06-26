@@ -1,12 +1,14 @@
 package com.josimarrenepont.workshopmongodb.services;
 
-import com.josimarrenepont.workshopmongodb.domain.Post;
-import com.josimarrenepont.workshopmongodb.repository.PostRepository;
-import com.josimarrenepont.workshopmongodb.services.exception.ObjectNotFoundException;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import com.josimarrenepont.workshopmongodb.domain.Post;
+import com.josimarrenepont.workshopmongodb.repository.PostRepository;
+import com.josimarrenepont.workshopmongodb.services.exception.ObjectNotFoundException;
 
 @Service
 public class PostService {
@@ -20,5 +22,9 @@ public class PostService {
             throw new ObjectNotFoundException("Object not found!");
         }
         return user;
+    }
+    
+    public List<Post> findByTitle(String text){
+    	return repository.findByTitleContainingIgnoreCase(text);
     }
 }

@@ -1,5 +1,6 @@
 package com.josimarrenepont.workshopmongodb.resouces;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.josimarrenepont.workshopmongodb.domain.Post;
+import com.josimarrenepont.workshopmongodb.resouces.util.URL;
 import com.josimarrenepont.workshopmongodb.services.PostService;
 
 @RestController
@@ -25,6 +28,12 @@ public class PostResource {
 		Optional<Post> obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-
+	
+	@GetMapping(value = "/titlesearch")
+	public ResponseEntity<List<Post>> FindByTitle(@RequestParam(value="text", defaultValue= "") String text) {
+		text = URL.decodeParam(text); //DECODIFICANDO TEXT
+		List<Post> list = service.findByTitle(text);
+		return ResponseEntity.ok().body(list);
+	}
 	
 }
