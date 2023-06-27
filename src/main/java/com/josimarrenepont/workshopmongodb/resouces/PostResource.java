@@ -1,5 +1,6 @@
 package com.josimarrenepont.workshopmongodb.resouces;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,5 +36,16 @@ public class PostResource {
 		List<Post> list = service.findBySearch(text);
 		return ResponseEntity.ok().body(list);
 	}
-	
+	@GetMapping(value = "/fullsearch")
+	public ResponseEntity<List<Post>> fullSearch(
+			@RequestParam(value="text", defaultValue= "") String text,
+			@RequestParam(value="minDate", defaultValue= "") String minDate,
+			@RequestParam(value="maxDate", defaultValue= "") String maxDate) {
+		
+		text = URL.decodeParam(text); //DECODIFICANDO TEXT
+		Date min = URL.converDate(minDate, new Date(0L));
+		Date max = URL.converDate(maxDate, new Date());
+		List<Post> list = service.fullSearch(text, min, max);
+		return ResponseEntity.ok().body(list);
+	}
 }
