@@ -41,7 +41,6 @@ public class PostResource {
 			@RequestParam(value="text", defaultValue= "") String text,
 			@RequestParam(value="minDate", defaultValue= "") String minDate,
 			@RequestParam(value="maxDate", defaultValue= "") String maxDate) {
-		
 		text = URL.decodeParam(text); //DECODIFICANDO TEXT
 		Date min = URL.converDate(minDate, new Date(0L));
 		Date max = URL.converDate(maxDate, new Date());
